@@ -1,0 +1,25 @@
+{
+  "name": "module5",
+  "version": "1.0.0",
+  "description": "Module 5 homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JSCRIPT300-Spring2016/Module_5.git"
+  },
+  "author": "BenBagBag",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JSCRIPT300-Spring2016/Module_5/issues"
+  },
+  "homepage": "https://github.com/JSCRIPT300-Spring2016/Module_5#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "eslint": "^2.9.0",
+    "express": "^4.13.4",
+    "nodemon": "^1.9.2"
+  }
+}
