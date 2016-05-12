@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-//var trucks = require('./trucks');
+//var trucks = require('../foodTrucks');
 var bodyParser = require('body-parser');
 var truckRoutes = require('./routes/truckRoutes');
 

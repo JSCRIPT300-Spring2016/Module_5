@@ -1,9 +1,10 @@
 var express = require('express');
-var app = express();
-//var trucks = require('./trucks');
+//var trucks = require('../foodTrucks');
 var router = express.Router();
 
-app.route('./trucks')
+
+
+router.route('./trucks')
   .get(function (request, response) {
     var truckList = trucks.getTrucks();
     response.send(truckList);
@@ -13,7 +14,7 @@ app.route('./trucks')
     response.send(truckList);
   });
 
-app.route('./trucks/:name')
+router.route('./trucks/:name')
   .get(function (request, response) {
     var truck = trucks.getTruck(request.params.name);
     response.send(truck);
@@ -23,13 +24,13 @@ app.route('./trucks/:name')
     response.send(truckList);
   });
 
-app.route('/food-types')
+router.route('/food-types')
   .get(function (request, response){
     var foodList = trucks.getFoodTypes();
     response.send(foodList);
   });
-
-app.route('/food-types/:type')
+  
+router.route('/food-types/:type')
   .get( function (request, response){
     var type = request.params.type;
     var truckList = trucks.filterTrucksByFoodType(type);
