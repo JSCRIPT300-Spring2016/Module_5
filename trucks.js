@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 var foodTrucks = [
   {
     name: '314 PIE',
@@ -502,3 +504,99 @@ var foodTrucks = [
     Twitter: 'https://twitter.com/fticecream'
   }
 ];
+
+var getTrucks = function() {
+  return foodTrucks;
+};
+
+// getTruck(name) - return the truck object matching 'name'
+var getTruck = function(name) {
+  var thisTruck =[];
+  for (var i = 0; i < foodTrucks.length; i++) {
+    var nameOfTruck = foodTrucks[i].name;
+    if (name === nameOfTruck) {
+      thisTruck.push( foodTrucks[i]);
+    }
+  }
+
+  return thisTruck;
+};
+
+// getFoodTypes() - return unique list of all associated food types (underscore has a function to help)
+var getFoodTypes = function() {
+  var foodType =[];
+  for (var i = 0; i < foodTrucks.length; i++) {
+    var typeOfFood = foodTrucks[i].type;
+    foodType.push( typeOfFood );
+  }
+  var flatten = _.flatten(foodType);
+  var uniq = _.uniq(flatten);
+
+  return uniq;
+};
+
+
+// filterByDay(day) - return trucks with 'day' in schedule (use your filterByDay function from Module 3 homework)
+var filterByDay = function(day) {
+  var truckList =[];
+  for (var i = 0; i < foodTrucks.length; i++) {
+    if (foodTrucks[i].schedule) {
+      for (var e = 0; e < foodTrucks[i].schedule.length; e++) {
+        var dayOfTruck = foodTrucks[i].schedule[e];
+        if (dayOfTruck === day) {
+
+          truckList.push( foodTrucks[i].name );
+        }
+      }
+    }
+  }
+
+  return truckList;
+};
+
+// filterByFoodType(foodType) - return trucks with associated 'foodType'
+var filterByFoodType = function(foodType) {
+  var truckList =[];
+  for (var i = 0; i < foodTrucks.length; i++) {
+    for(var e = 0; e < foodTrucks[i].type.length; e++){
+      var foodTruckType = foodTrucks[i].type[e];
+      if (foodType === foodTruckType) {
+        truckList.push( foodTrucks[i]);
+      }
+    }
+  }
+
+  return truckList;
+};
+
+var addTruck = function(truckObj){
+  if (truckObj) {
+    foodTrucks.push(truckObj);
+
+    return truckObj;
+  }
+};
+
+var removeTruck = function(truckname){
+  for (var i = 0; i < foodTrucks.length; i++) {
+    if (truckname === foodTrucks[i].name) {
+      var removeThis = foodTrucks.indexOf(foodTrucks[i]);
+      foodTrucks.splice(removeThis, 1);
+    }
+  }
+};
+
+var myTruckModule = {
+  getTrucks: getTrucks,
+  getTruck: getTruck,
+  getFoodTypes: getFoodTypes,
+  filterByDay: filterByDay,
+  filterByFoodType: filterByFoodType,
+  addTruck: addTruck,
+  removeTruck: removeTruck
+};
+
+module.exports = myTruckModule;
+
+
+
