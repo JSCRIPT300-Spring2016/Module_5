@@ -623,7 +623,7 @@ var filterTrucksByFoodType = function(foodType){
 var addTruck = function (truck){
   if (typeof truck === 'object' && truck.name !== 'undefined'){
     foodTrucks.push(truck);
-	
+
     return ('success');
   } else {
     return ('failure');
@@ -665,17 +665,5 @@ var myObj = {
   addTruck: addTruck,
   removeTruck: removeTruck
 };
-
-/*
-var k = {
-  name: "314 PIE",
-  type: ["French"]
-};
-
-var h = addTruck(k);
-console.log(h);
-
-var t = removeTruck("314 PIE");
-console.log(t);*/
 
 module.exports = myObj;
