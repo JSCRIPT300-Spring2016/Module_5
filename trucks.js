@@ -503,6 +503,8 @@ var foodTrucks = [
   }
 ];
 
+//next step - refactor step 5 in instructions
+
 var _ = require('lodash');
 
 function getTrucks() {
