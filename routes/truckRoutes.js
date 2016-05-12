@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
-var trucks = require('./trucks');
+//var trucks = require('./trucks');
+var router = express.Router();
 
 app.route('./trucks')
   .get(function (request, response) {
