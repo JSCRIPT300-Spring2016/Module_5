@@ -1,3 +1,10 @@
+/*eslint-env node*/
+
+//underscore
+var _ = require('underscore');
+
+/*eslint-disable */
+
 var foodTrucks = [
   {
     name: '314 PIE',
@@ -502,3 +509,83 @@ var foodTrucks = [
     Twitter: 'https://twitter.com/fticecream'
   }
 ];
+
+/*eslint-enable */
+
+// this module should support the following methods:
+
+// public: getTrucks() - return all trucks
+function getTrucks() {
+    //return all trucks
+  return foodTrucks;
+}
+
+// public: getTruck(name) - return the truck object matching 'name'
+function getTruck(truckName) {
+    //find the truck name
+  return _.findWhere(foodTrucks, { name: truckName });
+}
+
+// public: getFoodTypes() - return unique list of all
+// associated food types (underscore has a function to help)
+function getFoodTypes() {
+    //use underscore to get the list of types
+  return _.uniq(_.flatten(_.pluck(foodTrucks, 'type'))).sort();
+}
+
+// public: filterByDay(day) - return trucks with 'day' in schedule
+// (use your filterByDay function from Module 3 homework)
+function filterByDay(day) {
+    //loop and filter the truck array
+  return foodTrucks.filter(function (truck) {
+    return truck.schedule.indexOf(day) !== -1;
+  });
+}
+
+//public: filterByFoodType(foodType) - return trucks with associated 'foodType'
+function filterByFoodType(foodType) {
+    //loop and find in the truck array
+  return foodTrucks.filter(function (truck) {
+    return truck.type.find(function (type) {
+        return type.toLowerCase() === foodType.toLowerCase();
+      });
+  });
+
+}
+
+//public: addTruck(newTruck) - adds a truck to the array
+function addTruck(newTruck) {
+  if (newTruck) {
+        
+        //add truck
+    foodTrucks.push(newTruck);
+
+    return newTruck;
+  }
+}
+
+//public: removeTruck(name) - removes the truck from the array
+function removeTruck(name) {
+  if (name) {
+
+        //use underscore just because
+    foodTrucks = _.without(foodTrucks,
+          _.findWhere(foodTrucks, { name: name }));
+
+    return true;
+  }
+}
+
+//expose public stuff
+var publicStuff = {
+  getTrucks: getTrucks,
+  getTruck: getTruck,
+  getFoodTypes: getFoodTypes,
+  filterByDay: filterByDay,
+  filterByFoodType: filterByFoodType,
+  addTruck: addTruck,
+  removeTruck: removeTruck
+};
+
+//export
+module.exports = publicStuff;
