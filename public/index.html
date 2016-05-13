@@ -86,11 +86,10 @@
     <input type="submit" value="Add Food Truck" onclick="Validation()"/>
     <script>
        function Validation() {
-         var name = document.getElementById("t_name").innerHTML;
-         if(name === ''){
-           alert("Please enter a truck name!  It is now listed as MISSING! The \
-           food type is also listed as NONE! You may want to delete this \
-           entry and try again!");
+         var name = document.getElementById("t_name").value;
+         var type = document.getElementById("foodList").firstChild;
+         if(name === '' || !type){
+           alert("Please enter a truck name and a food type!  One or both entries are missing. The truck name is now listed as MISSING! The food type is also listed as NONE! You may want to delete this entry and try again!");
            document.getElementById("t_name").value = "MISSING!";
            document.getElementById("foodType").value = "NONE!";
            document.getElementById("addFoodType").click();
@@ -100,8 +99,7 @@
   </form>
   <h2>Food Truck list:</h2>
   <ul class="trucks-list"></ul>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/
-  jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="client.js"></script>
 </body>
 </html>
