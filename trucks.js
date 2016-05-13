@@ -1,5 +1,6 @@
 var foodTrucks = [
   {
+    /* eslint-disable max-len */
     name: '314 PIE',
     type: ['Sweet and Savory Pies', 'Pie', 'Sweets'],
     schedule: ['Monday', 'Wednesday', 'Thursday'],
@@ -501,4 +502,79 @@ var foodTrucks = [
     Facebook: 'https://www.facebook.com/fulltilticecreams',
     Twitter: 'https://twitter.com/fticecream'
   }
+  /* eslint-enable max-len */
 ];
+
+
+function getTrucks(){
+  return foodTrucks;
+};
+
+function __getIndex(name){
+  return foodTrucks.map(function(truck) {
+    return truck.name.toLowerCase();}).indexOf(name.toLowerCase());
+};
+
+function getTruck(name){
+  return foodTrucks[__getIndex(name)];
+};
+
+function getFoodTypes(){
+  var foods = [];
+  foodTrucks.map(function(truck){
+    truck.type.map(function(food){
+      if (foods.indexOf(food) === -1){
+        foods.push(food);
+      };
+    });
+  });
+
+  return foods;
+};
+
+function filterTrucksByDay(day){
+  var a = [];
+  foodTrucks.map(function(truck){
+    if (truck.schedule && truck.schedule.indexOf(day) > -1) {
+      a.push(truck.name);
+    }
+  });
+
+  return a;
+};
+
+function filterByFoodType(food){
+  var a = [];
+  foodTrucks.map(function(truck){
+    if(truck.type.indexOf(food) > -1){
+      a.push(truck.name);
+    }
+  });
+
+  return a;
+};
+
+function addTruck(truck){
+  foodTrucks.push(truck);
+};
+
+function removeTruck(name){
+  var i = __getIndex(name);
+  if (i > -1) {
+    foodTrucks.splice(i, 1);
+  } else {
+    return "Truck not Found";
+  }
+};
+
+var trucks = {
+  getTrucks : getTrucks,
+  getTruck : getTruck,
+  getFoodTypes : getFoodTypes,
+  filterTrucksByDay : filterTrucksByDay,
+  filterByFoodType : filterByFoodType,
+  addTruck : addTruck,
+  removeTruck : removeTruck
+};
+
+module.exports = trucks;
