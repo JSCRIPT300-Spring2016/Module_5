@@ -511,15 +511,13 @@ var getTrucks = function() {
 
 // getTruck(name) - return the truck object matching 'name'
 var getTruck = function(name) {
-  var thisTruck =[];
+  //var thisTruck =[];
   for (var i = 0; i < foodTrucks.length; i++) {
     var nameOfTruck = foodTrucks[i].name;
     if (name === nameOfTruck) {
-      thisTruck.push( foodTrucks[i]);
+      return foodTrucks[i];
     }
   }
-
-  return thisTruck;
 };
 
 // getFoodTypes() - return unique list of all associated food types (underscore has a function to help)
