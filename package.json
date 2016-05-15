@@ -1,0 +1,28 @@
+{
+  "name": "module5",
+  "version": "1.0.0",
+  "description": "food trucks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fushen16/Module_5.git"
+  },
+  "keywords": [
+    "trucks",
+    "express",
+    "restful"
+  ],
+  "author": "Fulin Shen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fushen16/Module_5/issues"
+  },
+  "homepage": "https://github.com/fushen16/Module_5#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4"
+  }
+}
