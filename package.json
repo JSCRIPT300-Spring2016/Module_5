@@ -1,0 +1,24 @@
+{
+  "name": "module_5",
+  "version": "1.0.0",
+  "description": "Module 5 Homework Solutions",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoeChildress/Module_5.git"
+  },
+  "author": "Joe Childress",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoeChildress/Module_5/issues"
+  },
+  "homepage": "https://github.com/JoeChildress/Module_5#readme"
+}
