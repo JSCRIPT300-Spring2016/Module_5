@@ -1,0 +1,23 @@
+{
+  "name": "module5",
+  "version": "1.0.0",
+  "description": "Week 5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkat70/Module_5.git"
+  },
+  "author": "Katja Borchert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bkat70/Module_5/issues"
+  },
+  "homepage": "https://github.com/bkat70/Module_5#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  }
+}
