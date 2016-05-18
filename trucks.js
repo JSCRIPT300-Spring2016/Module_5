@@ -502,3 +502,66 @@ var foodTrucks = [
     Twitter: 'https://twitter.com/fticecream'
   }
 ];
+
+function getTrucks() {
+  return foodTrucks;
+}
+function getTruck(name) {
+  var truckObj = foodTrucks.filter(function(truck) {
+    return truck.name === name;
+  });
+  return truckObj;
+}
+function getFoodTypes() {
+  var foodTypes = []
+  foodTrucks.forEach(function(truck) {
+    foodTypes = foodTypes.concat(truck.type);
+  })
+  foodTypes = _.uniq(foodTypes);
+  return foodTypes;
+}
+function filterTrucksByDay(day) {
+  day = day[0].toUpperCase() + day.slice(1).toLowerCase();
+
+  var filteredList = foodTrucks.filter(function (truck) {
+    return truck.schedule.indexOf(day) !== -1;
+  });
+
+  return filteredList;
+}
+
+function filterTrucksByFoodType(foodType) {
+  var filteredList = foodTrucks.filter(function (truck) {
+    var types = truck.type.map(function (type) {
+      return type.toLowerCase();
+    });
+
+    return truck.type.indexOf(foodType.toLowerCase) !== -1;
+  });
+  return filteredList;
+}
+
+function addTruck(newTruck) {
+  if (newTruck) {
+    foodTrucks.push(newTruck);
+    return newTruck;
+  }
+}
+
+function removeTruck(name) {
+  var index = foodTrucks.findIndex(function (truck) {
+    return truck.name === name;
+  });
+
+  foodTrucks.splice(index, 1);
+}
+
+module.exports = {
+  getTrucks: getTrucks,
+  getTruck: getTruck,
+  getFoodTypes: getFoodTypes,
+  filterTrucksByDay: filterTrucksByDay,
+  filterTrucksByFoodType: filterTrucksByFoodType,
+  addTruck: addTruck,
+  removeTruck: removeTruck
+}
