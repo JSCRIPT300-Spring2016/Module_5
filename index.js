@@ -4,6 +4,7 @@ var bodyparser = require('body-parser');
 var serveStatic = express.static('public');
 var app = express();
 var truckRouter = require('./routes/truckRoutes');
+//var urlEncoded = bodyParser.urlencoded({ extended: false });
 
 app.use( serveStatic );
 app.use( bodyparser.urlencoded({ extended: false }) );

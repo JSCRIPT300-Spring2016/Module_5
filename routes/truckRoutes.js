@@ -1,20 +1,14 @@
 // put your Express router code in here
 'use strict';
-//express
+
 var express = require('express');
-
-//the router
 var router = express.Router();
-
-//the list of trucks
 var foodTrucks = require('../trucks');
-
 
 router.route('/')
   .get(function(request, response) {
     response.send(foodTrucks.getTrucks());
   })
-
 
 .post(function(request, response) {
 
@@ -35,8 +29,8 @@ router.route('/:name')
     } else {
 
       //truck not found server error
-      response.status(404).json('Sorry, ' + request.params.name + ' was \
-        not found.');
+      response.status(404).json('Sorry, ' + request.params.name + ' was not \
+found.');
     }
   })
 
