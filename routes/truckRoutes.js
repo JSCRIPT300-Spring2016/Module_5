@@ -1,46 +1,39 @@
 // put your Express router code in here
 'use strict';
-
 var express = require('express');
+var bodyparser = require('body-parser');
+
+var trucks = require('../trucks');
+
+var urlEncoded = bodyparser.urlencoded({ extended: false });
+
 var router = express.Router();
-var foodTrucks = require('../trucks');
 
 router.route('/')
-  .get(function(request, response) {
-    response.send(foodTrucks.getTrucks());
+  .get(function (request, response) {
+    var truckList = trucks.getTrucks();
+
+    response.send(truckList);
   })
+  .post(urlEncoded, function(request, response) {
+    var newTruck =  trucks.addTruck(request.body);
 
-.post(function(request, response) {
+  response.status(201).send(newTruck);
+  });
 
-  //adding new truck
-  response.send(foodTrucks.addTruck(request.body));
-});
-
-//dynamic param - url driven getTruck via name
 router.route('/:name')
-  .get(function(request, response) {
-
-    //get truck via name
-    var truck = foodTrucks.getTruck(request.params.name);
-    if (truck) {
-
-      response.send(truck);
-
-    } else {
-
-      //truck not found server error
-      response.status(404).json('Sorry, ' + request.params.name + ' was not \
-found.');
-    }
+  .get(function (request, response) {
+    var truck = trucks.getTruck(request.params.name);
+    
+    response.send(truck);
   })
-
-
-//delete truck
-.delete(function(request, response) {
-
-  //remove existing truck
-  response.send(foodTrucks.removeTruck(request.params.name));
-
+  
+  .delete(function (request, response){
+    var name = request.params.name;
+    
+    trucks.removeTruck(name);
+  
+  response.status(200).json('Truck removed');
 });
 
 module.exports = router;

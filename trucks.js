@@ -558,21 +558,21 @@ function getTruck(name) {
 }
 
 /////////////NEW ITEM///////////////////
+
 function addTruck(newTruck) {
-  if (newTruck) {
-    foodTrucks.push(newTruck);
-  }
+  foodTrucks.push(newTruck);
+
+  return newTruck;
 }
 
 function removeTruck(name) {
-  var i = 0;
+  var index = foodTrucks.findIndex(function (truck) {
+    return truck.name === name;
+  });
 
-  for (i; i < foodTrucks.length; i++){
-    if ( name === foodTrucks[i] ) {
-      foodTrucks.splice(i, 1);
-    }
-  }
+  foodTrucks.splice(index, 1);
 }
+
 ///////////////NEW ITEM END/////////////////
 
 function getFoodTypes() {

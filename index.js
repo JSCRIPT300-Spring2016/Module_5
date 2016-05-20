@@ -1,20 +1,31 @@
 'use strict';
 var express = require('express');
-var bodyparser = require('body-parser');
-var serveStatic = express.static('public');
-var app = express();
+var trucks = require ('./trucks');
+
 var truckRouter = require('./routes/truckRoutes');
-//var urlEncoded = bodyParser.urlencoded({ extended: false });
 
-app.use( serveStatic );
-app.use( bodyparser.urlencoded({ extended: false }) );
-app.use( bodyparser.json() );
+var app = express();
 
-//this will get us to routes/truckRoutes if we
-// use /trucks in url which gets us acces to foodTrucks
-app.use( '/trucks', truckRouter );
+app.use(express.static('public'));
 
-app.listen(3000, function () {
+app.use('/trucks', truckRouter);
+
+//return list of all food types
+app.get('/food-types', function(request, response){
+  var foodList = trucks.getFoodTypes();
+
+  response.send(foodList);
+});
+
+//dynamic param return list off trucks by food type
+app.get('/food-types/:type', function(request, response) {
+  var type = request.params.type;
+  var truckList = trucks.filterTrucksByFoodType(type);
+
+  response.send(truckList);
+});
+
+app.listen(3000, function() {
   //console.log('server started on port 3000');
 });
 
