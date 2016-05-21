@@ -1,0 +1,24 @@
+{
+  "name": "module_5",
+  "version": "1.0.0",
+  "description": "Week 5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamanduaa/Module_5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamanduaa/Module_5/issues"
+  },
+  "homepage": "https://github.com/tamanduaa/Module_5#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "lodash": "^4.12.0"
+  }
+}
