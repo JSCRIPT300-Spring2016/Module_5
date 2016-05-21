@@ -521,19 +521,11 @@ module.exports = {
   /* eslint-enable no-undef */
 
   getTrucks: function () {
-    var trucks;
-    for (var i = 0; i < foodTrucks.length; i++) {
-      trucks += foodTrucks[i].name + ' :: ' + '\n';
-    }
-
-    return trucks;
+    return foodTrucks;
   },
 
   getTruck: function (truck) {
     var foundTruck = 0;
-    while (truck.charAt(0) === ':')
-      truck = truck.substr(1);
-
     for (var i = 0; i < foodTrucks.length; i++) {
       if (foodTrucks[i].name === truck) {
         var gotTruck = foodTrucks[i];
@@ -586,28 +578,22 @@ module.exports = {
 
   filterTrucksByFoodType: function (foodType) {
     var foundType = 0;
-    var trucksOfType = [];
-
-    while (foodType.charAt(0) === ':')
-      foodType = foodType.substr(1);
 
     foodType = foodType.charAt(0).toUpperCase() + foodType.slice(1);
-    console.log(foodType);
+    console.log('Looking for: '+ foodType);
 
     for (var i = 0; i < foodTrucks.length; i++) {
-
-      if (foodTrucks[i].type === foodType) {
-        // console.log("Found!" + foodTrucks[i].type);
-        trucksOfType += foodTrucks[i].type + ' -> ' + foodTrucks[i].name + '\n';
+      if (foodTrucks[i].type == foodType) {  // why doesn't === work here?
+        var typeTruck = foodTrucks[i];
         foundType = 1;
-      }
 
+        return typeTruck;
+      }
     }
     if (foundType === 0) {
+      console.log('Customer could not find this food: ' + foodType);
+
       return (foodType + ' type not found');
-    }
-    else {
-      return trucksOfType;
     }
   },
 
