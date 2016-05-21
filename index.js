@@ -14,14 +14,16 @@ var app = express();
 
 var bodyParser = require('body-parser');
 var truckRouter = require('./routes/truckRoutes');
+var typeRouter = require('./routes/truckRoutes');
+
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false, }));
 
 app.use('/trucks', truckRouter);
+app.use('/food-types', typeRouter);
 
 /* eslint-disable no-console */
 app.listen(3000, function () {
   console.log('server started on port 3000');
-
 });
