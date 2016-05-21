@@ -8,7 +8,9 @@ $(function () {
     var list = [];
     if (data && Array.isArray(data)) {
       data.forEach(function (truck) {
-        list.push('<li><li><span class="delete_link" data-truck="' + truck.name + '">X</span><a href="/trucks/' + truck.name + '">' + truck.name + '</a></li>');
+        list.push('<li><li><span class="delete_link" data-truck="' +
+        truck.name + '">X</span><a href="/trucks/' + truck.name + '">' +
+        truck.name + '</a></li>');
       });
       $('.trucks-list').append(list);
     }
@@ -25,7 +27,9 @@ $(function () {
       data: $form.serialize()
     })
     .done(function (truck) {
-      var item = '<li><span class="delete_link" data-truck="' + truck.name + '">X</span><a href="/trucks/' + truck.name + '">' + truck.name + '</a></li>';
+      var item = '<li><span class="delete_link" data-truck="' + truck.name +
+      '">X</span><a href="/trucks/' + truck.name + '">' + truck.name +
+      '</a></li>';
 
       $('.trucks-list').append(item);
       $form.trigger('reset');
@@ -70,13 +74,13 @@ $(function () {
     }
   });
 
-  $('#addFoodType').on('click', function (e) {
+  $('#addFoodType').on('click', function () {
     var foodType = $('[name=type]').val();
 
     addFoodType(foodType);
   });
 
-  $('#clearFoodTypes').on('click', function (e) {
+  $('#clearFoodTypes').on('click', function () {
     $('.foodType-list').empty();
   });
 
@@ -88,7 +92,7 @@ $(function () {
 
     $.ajax({
       method: 'DELETE',
-      url: '/trucks/' + $target.data('truck'),
+      url: '/trucks/' + $target.data('truck')
     })
     .done(function () {
       $target.closest('li').remove();
