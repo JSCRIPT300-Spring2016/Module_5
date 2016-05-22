@@ -664,8 +664,11 @@ var removeTruck = function (name) {
   var truckToBeRemoved = getTruck(name);
 
   if (truckToBeRemoved !== null) {
-    foodTrucks.pop(truckToBeRemoved);
-    result = true;
+    var idx = foodTrucks.indexOf(truckToBeRemoved);
+    var removedObjects = foodTrucks.splice(idx, 1);
+    if (removedObjects.length > 0) {
+      result = true;
+    }
   }
 
   return result;
