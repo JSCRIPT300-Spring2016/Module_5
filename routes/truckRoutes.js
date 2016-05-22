@@ -30,7 +30,7 @@ router.route('/trucks/:name')
   .delete(function(req, res){
     var truck = req.params.name;
     trucks.removeTruck(truck);
-    res.status(200);
+    res.status(200).send('removed');
   });
 
 router.route('/food-types')
