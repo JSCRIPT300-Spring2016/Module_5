@@ -13,13 +13,13 @@ var trucks = require('../trucks');
 
 router.route('/')
   .get(function(request, response) {
-    response.status(200).json(trucks.getTrucks());
+    response.send(trucks.getTrucks());
   })
   .post(urlEncoded, function(request, response) {
     var newTruck = request.body;
     if(newTruck) {
       trucks.addTruck(newTruck);
-      response.status(201).send(trucks.getTrucks());
+      response.status(201).send(newTruck);
     } else {
       response.status(400).send('problem on adding truck');
     }
@@ -32,7 +32,8 @@ router.route('/:name')
   })
   .delete(function(request, response) {
     var truckName = request.params.name;
-    response.status(200).json(trucks.removeTruck(truckName));
+    trucks.removeTruck(truckName);
+    response.sendStatus(200);
   });
 
 module.exports = router;

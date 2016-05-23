@@ -10,7 +10,6 @@ var app = express();
 var truckRouter = require('./routes/truckRoutes');
 var foodTypeRouter = require('./routes/foodTypeRouters');
 
-
 app.use(express.static('public'));
 app.use('/trucks', truckRouter);
 app.use('/food-types', foodTypeRouter);
