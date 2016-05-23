@@ -572,12 +572,12 @@ function removeTruck(name) {
   });
   foodTrucks.splice(truckIndex, 1);
 }
-
-module.exports.addTruck = addTruck;
-module.exports.foodTrucks = foodTrucks;
-module.exports.filterTrucksByDay = filterTrucksByDay;
-module.exports.filterTrucksByType = filterTrucksByType;
-module.exports.getFoodTypes = getFoodTypes;
-module.exports.getTrucks = getTrucks;
-module.exports.getTruck = getTruck;
-module.exports.removeTruck = removeTruck;
+module.exports = {
+  addTruck: addTruck,
+  foodTrucks: foodTrucks,
+  filterTrucksByDay: filterTrucksByDay,
+  filterTrucksByType: filterTrucksByType,
+  getTrucks: getTrucks,
+  getTruck: getTruck,
+  removeTruck: removeTruck
+}

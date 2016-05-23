@@ -11,7 +11,7 @@ router.route('/')
   })
   .post(function(request, response) {
     var newTruck = request.body;
-    if (newTruck) {
+    if (!newTruck) {
       response.status(400).json('No can do!');
     } else {
       newTruck = trucks.addTruck(newTruck);
