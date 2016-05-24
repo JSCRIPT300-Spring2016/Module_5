@@ -502,3 +502,34 @@ var foodTrucks = [
     Twitter: 'https://twitter.com/fticecream'
   }
 ];
+
+function getTrucks(){
+  return foodTrucks;
+}
+
+function getTruck(name){
+  return foodTrucks.find(function(truck){
+    return truck.name === name;
+  });
+}
+
+function addTruck(newTruck){
+  foodTrucks.push(newTruck);
+  
+  return newTruck
+}
+
+function removeTruck(name){
+  var index = foodTrucks.findIndex(function(truck){
+    
+  return truck.name === name;
+  });
+  foodTrucks.splice(index, 1);
+}
+
+module.exports = {
+  getTrucks: getTrucks,
+  getTruck: getTruck,
+  addTruck: addTruck,
+  removeTruck: removeTruck
+};
