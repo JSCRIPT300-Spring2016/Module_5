@@ -513,18 +513,18 @@ function getTruck(name){
   });
 }
 
-function addTruck(){
+function addTruck(newTruck){
   foodTrucks.push(newTruck);
   
   return newTruck
 }
 
-function removeTruck(newTruck){
-  var index = foodTrucks.findIndex(function (truck){
+function removeTruck(name){
+  var index = foodTrucks.findIndex(function(truck){
     
   return truck.name === name;
   });
-  foodTrucks.splice(index, 1)
+  foodTrucks.splice(index, 1);
 }
 
 module.exports = {
