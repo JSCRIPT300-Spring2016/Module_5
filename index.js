@@ -14,8 +14,7 @@ var app = express();
 
 var bodyParser = require('body-parser');
 var truckRouter = require('./routes/truckRoutes');
-var typeRouter = require('./routes/truckRoutes');
-
+var typeRouter = require('./routes/typeRoutes');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false, }));
