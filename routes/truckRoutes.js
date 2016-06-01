@@ -9,7 +9,6 @@ var foodTrucks = require('../trucks');
 
 var router = express.Router();
 
-/* eslint-enable no-undef */
 /* eslint-disable no-console */
 
 router.route('/')
@@ -34,9 +33,9 @@ router.route('/')
 // `/trucks/:name` This route returns a single truck object that matches
 // the name parameter passed in the route.
 // http://127.0.0.1:3000/trucks:Fez
-router.route('/:name')
+router.route('/:id')
 .get(function (request, response) {
-  var truckReq = request.params.name;
+  var truckReq = request.params.id;
   console.log('request[' + truckReq + ']');
   var truck = foodTrucks.getTruck(truckReq);
   response.send(truck);
@@ -50,22 +49,9 @@ router.route('/:name')
 
 // this doesn't work, still returning a truck not a type
 // http://127.0.0.1:3000/food-types/Pizza => Pizza truck not found
-router.route('/food-types/:type')
-  .get(function (request, response) {
-// `/food-types/:type` This route returns the list of all trucks that serve the
-// food type that matches (case insensitive) the type parameter passed.
-// http://127.0.0.1:3000/foodTypes:Pizza
-// http://127.0.0.1:3000/foodTypes:pizza
-    var typeReq = request.params.type;
-    console.log('request[' + typeReq + ']');
-    var type = foodTrucks.filterTrucksByFoodType(typeReq);
 
-    if (!type) {
-      response.status(404).json('No food type found for ' + type);
-    } else {
-      response.send(type);
-    }
-  });
+router.route('/food-types')
+.get(function (request, response) {
+});
 
-/* eslint-disable no-undef */
 module.exports = router; // return the router instance for node
