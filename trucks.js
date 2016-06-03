@@ -663,11 +663,26 @@ var removeTruck = function (name) {
   var result = false;
   var truckToBeRemoved = getTruck(name);
 
+  // The function getTruck(...) returns a not-null object if
+  // the truck with the given name was found.
   if (truckToBeRemoved !== null) {
-    var idx = foodTrucks.indexOf(truckToBeRemoved);
-    var removedObjects = foodTrucks.splice(idx, 1);
-    if (removedObjects.length > 0) {
-      result = true;
+    // The instructor wants Array.prototype.findIndex to be used
+    // instead of Array.prototype.indexOf.
+    //var idx = foodTrucks.indexOf(truckToBeRemoved);
+
+    // Set nameRegExpr to '/value of name/i' to search for 'value of name'
+    // ignoring case.
+    var nameRegExpr = new RegExp(name, 'i');
+    var truckFoundIdx =
+      foodTrucks.findIndex(function (currentTruck) {
+        return nameRegExpr.test(currentTruck.name);
+      });
+
+    if (truckFoundIdx > -1) {
+      var removedObjects = foodTrucks.splice(truckFoundIdx, 1);
+      if (removedObjects.length > 0) {
+        result = true;
+      }
     }
   }
 
