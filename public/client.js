@@ -99,7 +99,7 @@ $(function () {
 
     $.ajax({
       method: 'DELETE',
-      url: '/trucks/:name' + $target.data('truck'),
+      url: '/trucks/' + $target.data('truck'),
     })
     .done(function () {
       $target.closest('li').remove();
