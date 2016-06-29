@@ -1,4 +1,10 @@
-var foodTrucks = [
+'use strict';
+
+var filt = require('underscore');
+var util = require('util');
+var _ = require('lodash');
+
+var trucks = [
   {
     name: '314 PIE',
     type: ['Sweet and Savory Pies', 'Pie', 'Sweets'],
@@ -502,3 +508,65 @@ var foodTrucks = [
     Twitter: 'https://twitter.com/fticecream'
   }
 ];
+
+
+function getTrucks() {
+  return trucks;
+}
+
+function getTruck(name) {
+  return trucks.find(function (truck) {
+    return truck.name === name;
+  });
+}
+
+function getFoodTypes() {
+  var types = trucks.map(function (truck) {
+    return truck.type;
+  });
+  types = _.flatten(types);
+  types = _.uniq(types);
+
+  return types;
+}
+
+function filterByFoodType(foodType) {
+  return trucks.filter(function (truck) {
+    var types = truck.type.map(function (type) {
+      return type.toLowerCase();
+    });
+
+    return types.indexOf(foodType.toLowerCase()) > -1;
+  });
+}
+
+function filterByDay(day) {
+  return trucks.filter(function (truck) {
+    return truck.schedule.indexOf(day) > -1;
+  });
+}
+
+function addTruck(newT) {
+  trucks.push(newT);
+
+  return newT;
+}
+
+
+function removeTruck(name) {
+  var ind = trucks.findIndex(function (truck) {
+    return truck.name === name;
+  });
+
+  trucks.splice(ind, 1);
+}
+
+module.exports = {
+  filterByDay: filterByDay,
+  getTrucks: getTrucks,
+  getTruck: getTruck,
+  getFoodTypes: getFoodTypes,
+  filterByFoodType: filterByFoodType,
+  removeTruck: removeTruck,
+  addTruck: addTruck
+};
